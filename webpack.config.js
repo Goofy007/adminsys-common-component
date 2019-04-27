@@ -36,7 +36,15 @@ const config = {
   module: {
     rules: [
       // .ts(x) 文件应该首先经过 Typescript loader 的处理, 然后是 babel 的处理
-      { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') }
+      { test: /\.tsx?$/, loaders: ['babel-loader', 'ts-loader'], include: path.resolve('src') },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader", // 将 JS 字符串生成为 style 节点
+          "css-loader", // 将 CSS 转化成 CommonJS 模块
+          "sass-loader" // 将 Sass 编译成 CSS，默认使用 Node Sass
+        ]
+      }
     ]
   },
 }
