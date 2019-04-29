@@ -5,11 +5,18 @@ import BasicSearch from "./BasicSearch"
 import "./index.scss"
 
 const App = () => {
+  const handleSearch = (values: any) => {
+    console.log("values", values)
+  }
+
+  const handleReset = () => {
+
+  }
   return (
     <div>
       <p>Hello world!</p>
       <Buttonantd />
-      <BasicSearch />
+      <BasicSearch onSearch={handleSearch} onReset={handleReset} />
     </div>
   )
 }

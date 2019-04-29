@@ -20,7 +20,7 @@ class BasicSearchForm extends React.Component<any, any> {
     renderFormItem(item: { type: string, name: string, selectList?: Array<object> }) {
         let { getFieldDecorator } = this.props.form;
         if (item.type === "text") {
-            return <Form.Item label={item.name}>
+            return <Form.Item label={item.name} key={item.name}>
                 {getFieldDecorator('name', {
 
                 })(
@@ -29,7 +29,7 @@ class BasicSearchForm extends React.Component<any, any> {
             </Form.Item >
         }
         if (item.type === "select") {
-            return <Form.Item label={item.name}>
+            return <Form.Item label={item.name} key={item.name}>
                 {getFieldDecorator('city', {
 
                 })(
@@ -37,7 +37,7 @@ class BasicSearchForm extends React.Component<any, any> {
                         {
                             item.selectList &&
                             item.selectList.map((selectOption: any) => {
-                                return <Option value={selectOption.value}>{selectOption.key}</Option>
+                                return <Option key={selectOption.value} value={selectOption.value}>{selectOption.key}</Option>
                             })
 
                         }
@@ -47,6 +47,15 @@ class BasicSearchForm extends React.Component<any, any> {
         }
     }
 
+    handleSearch = () => {
+        let values = this.props.form.getFieldsValue()
+        this.props.onSearch(values)
+    }
+
+    handleReset = () => {
+        this.props.form.resetFields()
+        this.props.onReset()
+    }
     render() {
         return (
             <div>
@@ -56,8 +65,8 @@ class BasicSearchForm extends React.Component<any, any> {
                     })}
                 </Form>
                 <div>
-                    <Button type="primary" onClick={this.props.onSearch}>查询</Button>
-                    <Button onClick={this.props.onReset}>重置</Button>
+                    <Button type="primary" onClick={this.handleSearch}>查询</Button>
+                    <Button onClick={this.handleReset}>重置</Button>
                 </div>
             </div>
         )
