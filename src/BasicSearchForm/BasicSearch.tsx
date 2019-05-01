@@ -4,36 +4,37 @@ import { Input, Select, Form, Button, Checkbox, Radio } from 'antd'
 const FormItem = Form.Item;
 const Option = Select.Option;
 
-const data = [
-    {
-        type: "text",
-        name: "姓名"
-    },
-    {
-        type: "select",
-        name: "城市",
-        selectList: [{ key: "北京", value: 1 }, { key: "上海", value: 2 }]
-    }
-]
+interface IBasicSearchProps {
+    data: Array<object>,
+    onSearch: (values: object) => {},
+    form: any
+}
 
-class BasicSearchForm extends React.Component<any, any> {
-    renderFormItem(item: { type: string, name: string, selectList?: Array<object> }) {
+interface SearchItemProps {
+    type: string,
+    name: string,
+    width: number,
+    initialValue: string | number
+    selectList?: Array<object>
+}
+class BasicSearchForm extends React.Component<IBasicSearchProps, any> {
+    renderFormItem(item: SearchItemProps) {
         let { getFieldDecorator } = this.props.form;
         if (item.type === "text") {
             return <Form.Item label={item.name} key={item.name}>
                 {getFieldDecorator('name', {
-
+                    initialValue: item.initialValue
                 })(
-                    <Input />
+                    <Input style={{ width: item.width }} />
                 )}
             </Form.Item >
         }
         if (item.type === "select") {
             return <Form.Item label={item.name} key={item.name}>
                 {getFieldDecorator('city', {
-
+                    initialValue: item.initialValue
                 })(
-                    <Select>
+                    <Select style={{ width: item.width }}>
                         {
                             item.selectList &&
                             item.selectList.map((selectOption: any) => {
@@ -59,7 +60,7 @@ class BasicSearchForm extends React.Component<any, any> {
         return (
             <div>
                 <Form>
-                    {data.map((item: any) => {
+                    {this.props.data.map((item: any) => {
                         return this.renderFormItem(item)
                     })}
                 </Form>
