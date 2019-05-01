@@ -54,7 +54,6 @@ class BasicSearchForm extends React.Component<any, any> {
 
     handleReset = () => {
         this.props.form.resetFields()
-        this.props.onReset()
     }
     render() {
         return (

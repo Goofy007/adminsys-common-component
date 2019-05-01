@@ -1,22 +1,25 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Buttonantd from "./Buttonantd";
-import BasicSearch from "./BasicSearch"
+import BasicSearchExample from "./BasicSearchForm/BasicSearch.example"
 import "./index.scss"
 
 const App = () => {
+
   const handleSearch = (values: any) => {
     console.log("values", values)
+    // getData(values)
   }
 
   const handleReset = () => {
-
+    // getData()
   }
   return (
     <div>
       <p>Hello world!</p>
-      <Buttonantd />
-      <BasicSearch onSearch={handleSearch} onReset={handleReset} />
+      <div>
+          <h3>搜索框：</h3>
+          <BasicSearchExample />
+      </div>
     </div>
   )
 }
