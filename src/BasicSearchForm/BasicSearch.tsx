@@ -59,20 +59,17 @@ class BasicSearchForm extends React.Component<IBasicSearchProps, any> {
     render() {
         return (
             <div>
-                <Form>
+                <Form layout="inline">
                     {this.props.data.map((item: any) => {
                         return this.renderFormItem(item)
                     })}
+                    <Form.Item><Button type="primary" onClick={this.handleSearch}>查询</Button></Form.Item>
+                    <Form.Item><Button onClick={this.handleReset}>重置</Button></Form.Item>
                 </Form>
-                <div>
-                    <Button type="primary" onClick={this.handleSearch}>查询</Button>
-                    <Button onClick={this.handleReset}>重置</Button>
-                </div>
             </div>
         )
     }
 }
-
 
 const WrappedBasicSearchForm = Form.create()(BasicSearchForm);
 
