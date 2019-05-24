@@ -11,6 +11,13 @@ const menuList = [
         ]
     },
     {
+        title: "通用业务组件",
+        key: '/common/component',
+        children: [
+            { title: '表格', key: '/common/component/commonTable' }
+        ]
+    },
+    {
         title: 'UI',
         key: '/ui',
         children: [
