@@ -11,9 +11,6 @@ class BasicHeader extends Component {
                         <a href="#">退出</a>
                     </Col>
                 </Row>
-                <Row>
-                    <Col span={12}>面包屑</Col>
-                </Row>
             </div>
         );
     }
