@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Table } from "antd";
 
-
 function pagination(data: any, changePage?: any, changeSize?: any) {
     return {
         onChange: (current: any) => {
@@ -19,15 +18,14 @@ function pagination(data: any, changePage?: any, changeSize?: any) {
     };
 }
 
-
 class ETable extends React.Component<any, any> {
-    state = {
-        currentPage: 1,
-        pageSize: 10,
-    }
+    // state = {
+    //     currentPage: this.props.currentPage,
+    //     pageSize: this.props.pageSize
+    // }
 
     render() {
-        let { currentPage, pageSize } = this.state
+        let { currentPage, pageSize } = this.props
         let { selection, totalCount } = this.props
 
         let data = {
@@ -37,17 +35,19 @@ class ETable extends React.Component<any, any> {
         };
 
         let changePage = (current: any) => {
-            this.setState({
-                currentPage: current
-            })
+            // this.setState({
+            //     currentPage: current
+            // })
+            this.props.changePage(current, this.props.pageSize)
             this.props.requestApi(selection, current, pageSize)
         }
 
         let changeSize = (size: any) => {
-            this.setState({
-                pageSize: size,
-                currentPage: 1
-            });
+            // this.setState({
+            //     pageSize: size,
+            //     currentPage: 1
+            // });
+            this.props.changePage(this.props.currentPage, size)
             this.props.requestApi(selection, currentPage, size)
         };
         let currentPagination = pagination(
