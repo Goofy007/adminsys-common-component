@@ -6,15 +6,14 @@
     overflow-x: hidden;
 
     &-side {
-        flex: 1;
-        width: 100%;
+        width: 256px;
         height: 100vh;
         background-color: $layout-sider-body-background;
     }
 
     &-content {
-        flex: 6;
-        width: 100%;
+        // box-sizing: border-box;
+        width: calc(100% - 256px);
         display: flex;
         flex-direction: column;
         background: $layout-body-background;

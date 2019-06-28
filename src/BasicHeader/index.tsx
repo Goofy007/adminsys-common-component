@@ -1,16 +1,25 @@
 import React, { Component } from 'react';
-import { Row,Col } from 'antd';
+import { Menu, Icon } from 'antd';
+import "./index.scss"
 
 class BasicHeader extends Component {
     render() {
         return (
-            <div>
-                <Row>
-                    <Col span={24}>
-                        <span>欢迎，Admin</span>
-                        <a href="#">退出</a>
-                    </Col>
-                </Row>
+            <div className="header">
+                <Menu mode="horizontal">
+                    <Menu.Item key="mail">
+                        <Icon type="mail" />
+                        消息中心
+                </Menu.Item>
+                    <Menu.Item key="user">
+                        <Icon type="user" />
+                        个人中心
+                </Menu.Item>
+                    <Menu.Item key="login">
+                        <Icon type="login" />
+
+                    </Menu.Item>
+                </Menu>
             </div>
         );
     }
